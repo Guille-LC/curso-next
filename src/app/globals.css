@@ -6,7 +6,3 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-.titulo {
-  font-size: 4rem;
-}
