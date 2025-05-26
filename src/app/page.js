@@ -1,9 +1,10 @@
 import { Carousel } from "../components/Carousel";
+import './styles/title.css'
 
 export default function Home() {
   return (
     <>
-      <h1 className="text-5xl text-center font-extrabold dark:text-black">Catalina Posdeley</h1>
+      <h1 className="title text-5xl text-center font-extrabold dark:text-black">Catalina Posdeley</h1>
       <Carousel />
       <p>
         <strong className="block w-1/2 mx-auto text-center">

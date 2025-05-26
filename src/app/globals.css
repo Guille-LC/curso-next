@@ -1,8 +1,35 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "SaintDelafield";
+  src: url(/Mrs_Saint_Delafield.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
-  background: var(--background);
   background-color: bisque;
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-items: center;
+  align-content: center;
+  gap: 20px;
+}
+
+.navbutton {
+  border-color: blue;
+  border-style: inset;
+  border-width: 2px;
+  border-radius: 5px;
+  width: 90px;
+  margin: 4px;
+	font-weight: bold;
+  text-align: center;
+}
+
+.navbutton:hover {
+  background-color: aliceblue;
+  
 }
