@@ -40,6 +40,28 @@ body {
   
 }
 
+.categorySelector {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.categoryButton {
+  border-color: rgb(47, 255, 110);
+  color: white;
+  background-color: #085a38;
+  border-style: inset;
+  border-width: 2px;
+  border-radius: 5px;
+  width: 90px;
+  margin: 4px;
+	font-weight: bold;
+  text-align: center;
+  width: 100px;
+}
+
 .flexbooks {
   display: flex;
   gap: 50px;
