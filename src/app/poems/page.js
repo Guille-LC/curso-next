@@ -1,9 +1,31 @@
 import '../styles/poems.css'
 
-export default function() {
+export default async function() {
+
+    const data = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        next: {
+        revalidate: 60
+        },
+        cache: "default"
+    })
+    
+    const posts = await data.json();
+
     return(
-        <div className="poems">
-            <h2 className='poemtitle'>Versos a Medianoche</h2>
+        <div>
+            <ul>
+                {posts.map((post) => (
+                    <li key={post.id}>
+                        <p href={`/posts/${post.id}`}>{post.title}</p>
+                        <p>{post.body}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
+{/* <h2 className='poemtitle'>Versos a Medianoche</h2>
             <p className='verse'>
                 En la tinta callada de un sueño sin fin,<br />
                 navega la luna, dibuja el jardín.<br />
@@ -36,7 +58,4 @@ export default function() {
                 como quien ama sin explicación.<br />
                 El viento las mece, les da dirección,<br />
                 y el tiempo se esconde tras cada rincón.
-            </p>
-        </div>
-    )
-}
+            </p> */}

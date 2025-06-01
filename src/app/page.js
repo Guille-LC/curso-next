@@ -1,11 +1,10 @@
-import { Carousel } from "../components/Carousel";
+
 import './styles/title.css'
 
-export default function Home() {
+export default function Home() { 
   return (
     <>
-      <h1 className="title">Catalina Posdeley</h1>
-      <Carousel />
+      <h1 className="title">Libros de Catalina Posdeley</h1>
       <div className="flexbooks">
         {/* Libro 1 */}
             <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
