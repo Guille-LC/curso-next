@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Catalina Posdeley",
   description: "Sitio de Catalina Posdeley - Escritora",
+  keywords: ['poesia', 'ficcion','literatura','novela'],
   icons: {
     icon: "/favicon.ico"
   }

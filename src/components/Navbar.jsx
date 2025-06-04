@@ -19,10 +19,7 @@ export function Navbar() {
                     <Link href={"/about"}>Bio</Link>
                 </li>
                 <li className="navbutton">
-                    <Link href={"/books"}>Libros</Link>
-                </li>
-                <li className="navbutton">
-                    <Link href={"/poems"}>Poemas</Link>
+                    <Link href={`/products/:category`}>Libros</Link>
                 </li>
                 <li className="navbutton">
                     <Link href={"/contact"}>Contacto</Link>
