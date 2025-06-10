@@ -3,12 +3,6 @@ import ProductsList from '@/src/components/products/ProductsList'
 import Link from "next/link";
 import '@/src/app/styles/categorybutton.css'
 
-export async function generateMetadata({params,searchParams},parent) { 
-    return{
-        title:`Catalina Posdeley - ${params.category}`,
-        description:`Libros de ${params.category}, Catalina Posdeley`
-    }
-}
 
 export function generateStaticParams() {
   return [
@@ -22,7 +16,7 @@ export function generateStaticParams() {
 
 export default async function Productos ({params}) {
     
-    const { category } = params;
+    const { category } = await params;
 
     return(
         <div>

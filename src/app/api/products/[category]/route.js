@@ -18,7 +18,8 @@ export async function GET(request, { params }) {
     id: doc.id,
     ...doc.data(),
     }));
-
+    console.log(products);
+    
     return NextResponse.json({
         products,
     });
