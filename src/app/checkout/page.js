@@ -4,6 +4,8 @@ import { db } from '@/src/firebase/config';
 import { collection, addDoc, doc, updateDoc, getDoc } from 'firebase/firestore';
 import { useCartContext } from '@/src/components/context/CartContext';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+const router = useRouter();
 
 export default function CheckoutPage() {
     const { cart, removeFromCart, updateQuantity, clearCart } = useCartContext();
@@ -18,40 +20,45 @@ export default function CheckoutPage() {
     };
 
     const handleOrder = async () => {
-        if (!customer.name || !customer.email || !customer.phone) {
-        alert('Completá los datos del cliente');
+  if (!customer.name || !customer.email || !customer.phone) {
+    alert('Completá los datos del cliente');
+    return;
+  }
+  if (cart.length === 0) {
+    alert('El carrito está vacío');
+    return;
+  }
+
+  try {
+    for (const item of cart) {
+      const snap = await getDoc(doc(db, 'libros', item.id));
+      if (item.quantity > snap.data().stock) {
+        alert(`No hay suficiente stock para "${item.title}". Disponible: ${snap.data().stock}`);
         return;
+      }
     }
-    if (cart.length === 0) {
-        alert('El carrito está vacío');
-        return;
-    }
-    try {
-        for (const item of cart) {
-        const snap = await getDoc(doc(db, 'libros', item.id));
-        if (item.quantity > snap.data().stock) {
-            alert(`No hay suficiente stock para "${item.title}". Disponible: ${snap.data().stock}`);
-            return;
-        }
-        }
-        const order = {
-        buyer: customer,
-        items: cart.map(({ id, title, price, quantity }) => ({ id, title, price, quantity })),
-        total: cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
-        };
-        const docRef = await addDoc(collection(db, 'orders'), order);
-        for (const item of cart) {
-        await updateDoc(doc(db, 'libros', item.id), {
-            stock: item.stock - item.quantity,
-        });
-        }
-        clearCart();
-        alert(`Orden generada correctamente. ID: ${docRef.id}`);
-    } catch (error) {
-        console.error(error);
-        alert('Ocurrió un error al generar la orden');
-    }
+
+    const order = {
+      buyer: customer,
+      items: cart.map(({ id, title, price, quantity }) => ({ id, title, price, quantity })),
+      total: cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
     };
+
+    const docRef = await addDoc(collection(db, 'orders'), order);
+
+    for (const item of cart) {
+      await updateDoc(doc(db, 'libros', item.id), {
+        stock: item.stock - item.quantity,
+      });
+    }
+
+    clearCart();
+    router.push(`/checkout/success?id=${docRef.id}`);
+  } catch (error) {
+    console.error(error);
+    alert('Ocurrió un error al generar la orden');
+  }
+};
 
     return (
         <div className="max-w-4xl mx-auto p-4">
