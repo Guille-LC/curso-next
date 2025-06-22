@@ -8,6 +8,7 @@ export function CreateForm() {
       title: "",
       description:"",
       price: 0,
+      stock: 0,
       category:"",
       img: ""
     }
@@ -48,6 +49,7 @@ export function CreateForm() {
     title: "",
     description:"",
     price: 0,
+    stock: 0,
     category:"",
     img: ""
   })
@@ -77,6 +79,15 @@ export function CreateForm() {
         type="number"
         name="price"
         value={data.price}
+        onChange={(e) => handleChange({ e, setValues: setData, values: data })}
+        placeholder="Price"
+        className="w-full p-2 border rounded"
+        required
+      />
+      <input
+        type="number"
+        name="price"
+        value={data.stock}
         onChange={(e) => handleChange({ e, setValues: setData, values: data })}
         placeholder="Price"
         className="w-full p-2 border rounded"
