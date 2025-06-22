@@ -3,6 +3,11 @@ import ProductsList from '@/src/components/products/ProductsList'
 import Link from "next/link";
 import '@/src/app/styles/categorybutton.css'
 
+export const metadata = {
+  title: "Catalina Posdeley",
+  description: `Listado de productos`,
+  keywords: ['poesia', 'ficcion','literatura','novela']
+};
 
 export function generateStaticParams() {
   return [

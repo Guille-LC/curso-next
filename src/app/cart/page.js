@@ -5,6 +5,12 @@ import { useCartContext } from "@/src/components/context/CartContext"
 import Link from "next/link"
 import Image from "next/image"
 
+export const metadata = {
+  title: "Catalina Posdeley",
+  description: `Carrito de compras`,
+  keywords: ['poesia', 'ficcion','literatura','novela']
+};
+
 export default function CartPage() {
     const { cart, removeFromCart, clearCart, updateQuantity } = useCartContext()
     const [total, setTotal] = useState(0)
