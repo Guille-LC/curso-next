@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useCartContext } from "@/src/components/context/CartContext"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function CartPage() {
     const { cart, removeFromCart, clearCart, updateQuantity } = useCartContext()
@@ -28,7 +29,7 @@ export default function CartPage() {
             <ul className="space-y-4">
                 {cart.map((product, index) => (
                     <li key={index} className="flex items-center gap-4 border-b pb-4">
-                        <img src={product.img} alt={product.title} className="w-20 h-20 object-cover rounded" />
+                        <Image src={product.img} alt={product.title} className="w-20 h-20 object-cover rounded" />
                         <div className="flex-1">
                             <h2 className="text-xl font-semibold">{product.title}</h2>
                             <p className="text-gray-600">Precio: ${product.price}</p>

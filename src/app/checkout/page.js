@@ -5,9 +5,12 @@ import { collection, addDoc, doc, updateDoc, getDoc } from 'firebase/firestore';
 import { useCartContext } from '@/src/components/context/CartContext';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-const router = useRouter();
+
 
 export default function CheckoutPage() {
+
+  const router = useRouter();
+
     const { cart, removeFromCart, updateQuantity, clearCart } = useCartContext();
     const [customer, setCustomer] = useState({
         name: '',

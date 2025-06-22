@@ -4,6 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/src/firebase/config";
 import { useEffect, useState } from "react";
 import { useCartContext } from "@/src/components/context/CartContext";
+import Image from "next/image";
 
 export default function ProductDetail({ params }) {
   const { id } = params;
@@ -31,7 +32,7 @@ export default function ProductDetail({ params }) {
   return (
     <div className="p-6 max-w-2xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-      <img
+      <Image
         className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg mb-4"
         src={product.img}
         alt={product.title}
