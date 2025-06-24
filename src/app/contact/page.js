@@ -2,7 +2,7 @@
 
 import '../styles/form.css'
 
-export default function contactForm() {
+export default function ContactForm() {
     return(
         <>
         <h2>Subscribite a mi newsletter</h2>

@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useAuthContext } from "@/src/components/context/AuthContext";
 import { handleChange } from "@/src/utils/handleChange";
 
-export function LoginForm() {
+export default function LoginForm() {
     const {login,register,loginWithGoogle} = useAuthContext()
     const [values,setValues] = useState({
         email:"",password:""
