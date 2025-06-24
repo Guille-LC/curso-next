@@ -6,11 +6,7 @@ import { useEffect, useState } from "react";
 import { useCartContext } from "@/src/components/context/CartContext";
 import Image from "next/image";
 
-export const metadata = {
-  title: "Catalina Posdeley",
-  description: `Detalles del libro ${id.title}`,
-  keywords: ['poesia', 'ficcion','literatura','novela']
-};
+
 
 export default function ProductDetail({ params }) {
   const { id } = params;
