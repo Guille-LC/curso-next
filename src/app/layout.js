@@ -1,7 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import "./globals.css";
+import { CartProvider } from "../components/context/CartContext";
+import { AuthProvider } from "../components/context/AuthContext";
 
 
 const geistSans = Geist({
@@ -17,6 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Catalina Posdeley",
   description: "Sitio de Catalina Posdeley - Escritora",
+  keywords: ['poesia', 'ficcion','literatura','novela'],
   icons: {
     icon: "/favicon.ico"
   }
@@ -26,9 +29,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Navbar />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <CartProvider>
+            <Navbar />
+              {children}
+            <Footer />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

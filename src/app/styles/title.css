@@ -1,5 +1,16 @@
+@font-face {
+    src: url('/MrsSaintDelafield-Regular.ttf') format("truetype");
+    font-family: "SaintDelafield";
+    font-weight: normal;
+    font-style: normal;
+}
+
 .title {
     font-family: "SaintDelafield";
     font-size: 5rem;
     margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
