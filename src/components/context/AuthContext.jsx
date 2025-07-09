@@ -8,6 +8,7 @@ export const AuthContext = createContext();
 
 export const useAuthContext = () => useContext(AuthContext);
 
+
 export function AuthProvider({children}) {
     const [user, setUser] = useState({
         isAutenthicated: false,
@@ -50,6 +51,44 @@ export function AuthProvider({children}) {
     }
 
     useEffect(() => {
+
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+
+        if(currentUser) {
+
+            setUser({
+
+                isAuthenticated: true,
+
+                email: currentUser.email,
+
+               userId: currentUser.userId
+
+            });
+
+        } else {
+
+            setUser({
+
+                isAuthenticated: false,
+
+                email: null,
+
+                userId: null
+
+            });
+
+        }
+
+    });
+
+    // Cleanup
+
+    return () => unsubscribe();
+
+}, []);
+
+    /* useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             if(currentUser) {
                 setUser({
@@ -71,5 +110,5 @@ export function AuthProvider({children}) {
         <AuthContext.Provider value={{user,login,register,logout,loginWithGoogle}}>
             {children}
         </AuthContext.Provider>
-    )
+    ) */
 }
